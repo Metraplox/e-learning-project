@@ -1,0 +1,59 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type AuthResponse {
+  token: String!
+  user: User!
+}
+
+type Course {
+  description: String!
+  id: ID!
+  price: Float!
+  professorId: String!
+  tags: [String!]!
+  title: String!
+}
+
+input CreateCourseInput {
+  description: String!
+  price: Float!
+  professorId: String!
+  tags: [String!]!
+  title: String!
+}
+
+input CreateUserInput {
+  email: String!
+  fullname: String!
+  password: String!
+  role: String!
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+type Mutation {
+  createCourse(input: CreateCourseInput!): Course!
+  createUser(input: CreateUserInput!): User!
+  login(input: LoginInput!): AuthResponse!
+}
+
+type Query {
+  getCourseById(id: ID!): Course!
+  getCourses: [Course!]!
+  getCoursesByProfessor(professorId: ID!): [Course!]!
+  getUserById(id: ID!): User!
+  getUsers: [User!]!
+  healthCheck: String!
+}
+
+type User {
+  email: String!
+  fullname: String!
+  id: ID!
+  role: String!
+}
